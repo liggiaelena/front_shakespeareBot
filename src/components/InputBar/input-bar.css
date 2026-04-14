@@ -1,0 +1,145 @@
+/* ── InputBar — BEM ─────────────────────────────────────────────────────── */
+.input-bar {
+  padding: 0 36px 22px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-parchment) 0%,
+    var(--color-parchment-dark) 100%
+  );
+  border-top: 2px solid var(--color-border);
+}
+
+.input-bar__rule {
+  height: 3px;
+  margin-bottom: 16px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-gold-dark) 15%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 85%,
+    transparent 100%
+  );
+}
+
+/* ── Form row ───────────────────────────────────────────────────────────── */
+.input-bar__form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── Text input ─────────────────────────────────────────────────────────── */
+.input-bar__input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: var(--color-parchment-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 11px 15px;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-shadow: inset 0 2px 4px rgba(44, 24, 16, 0.08);
+}
+
+.input-bar__input:focus {
+  border-color: var(--color-gold-dark);
+  box-shadow:
+    inset 0 2px 4px rgba(44, 24, 16, 0.08),
+    0 0 0 2px rgba(154, 122, 40, 0.22);
+}
+
+.input-bar__input::placeholder {
+  color: var(--color-ink-faded);
+  font-style: italic;
+}
+
+.input-bar__input:disabled {
+  opacity: 0.55;
+}
+
+/* ── Buttons shared ─────────────────────────────────────────────────────── */
+.input-bar__mic-btn,
+.input-bar__send-btn {
+  font-family: var(--font-heading);
+  border-radius: var(--border-radius);
+  padding: 11px 15px;
+  font-size: 1rem;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  letter-spacing: 0.05em;
+}
+
+/* ── Mic button ─────────────────────────────────────────────────────────── */
+.input-bar__mic-btn {
+  background: var(--color-parchment-light);
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  min-width: 48px;
+  text-align: center;
+}
+
+.input-bar__mic-btn:hover:not(:disabled) {
+  background: var(--color-parchment-shadow);
+  border-color: var(--color-gold-dark);
+}
+
+.input-bar__mic-btn--recording {
+  background: var(--color-crimson) !important;
+  color: #fdf6e8 !important;
+  border-color: #6a1010 !important;
+  animation: mic-pulse 1.6s infinite;
+}
+
+@keyframes mic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 26, 26, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(139, 26, 26, 0);
+  }
+}
+
+/* ── Send button ────────────────────────────────────────────────────────── */
+.input-bar__send-btn {
+  background: var(--color-gold-dark);
+  color: var(--color-parchment-light);
+  border: 1px solid #7a5a18;
+  font-size: 0.82rem;
+  padding: 11px 20px;
+}
+
+.input-bar__send-btn:hover:not(:disabled) {
+  background: var(--color-gold);
+  color: var(--color-ink);
+  border-color: var(--color-gold-dark);
+}
+
+.input-bar__mic-btn:disabled,
+.input-bar__send-btn:disabled {
+  opacity: 0.38;
+}
+
+/* ── Recording hint ─────────────────────────────────────────────────────── */
+.input-bar__recording-hint {
+  margin-top: 9px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-crimson);
+  text-align: center;
+  animation: fade-up 0.25s ease;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,69 @@
+/* ── Header — BEM ───────────────────────────────────────────────────────── */
+.header {
+  padding: 20px 32px 0;
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    var(--color-parchment-deeper) 0%,
+    var(--color-parchment-dark) 60%,
+    var(--color-parchment) 100%
+  );
+  border-bottom: 2px solid var(--color-border);
+}
+
+.header__top-rule {
+  height: 4px;
+  margin-bottom: 16px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-gold-dark) 15%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 85%,
+    transparent 100%
+  );
+}
+
+.header__bottom-rule {
+  height: 3px;
+  margin-top: 14px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-gold-dark) 15%,
+    var(--color-gold) 50%,
+    var(--color-gold-dark) 85%,
+    transparent 100%
+  );
+}
+
+.header__ornament {
+  font-size: 1.05rem;
+  color: var(--color-gold-dark);
+  letter-spacing: 0.6em;
+  margin: 6px 0;
+  user-select: none;
+}
+
+.header__title-group {
+  margin: 4px 0;
+}
+
+.header__title {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.header__subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-ink-light);
+  margin-top: 5px;
+  letter-spacing: 0.07em;
+}

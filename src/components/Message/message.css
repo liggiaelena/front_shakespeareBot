@@ -1,0 +1,148 @@
+/* ── Message — BEM ──────────────────────────────────────────────────────── */
+.message {
+  display: flex;
+  gap: 12px;
+  max-width: 82%;
+  animation: fade-up 0.3s ease;
+}
+
+.message--shakespeare {
+  align-self: flex-start;
+  flex-direction: row;
+}
+
+.message--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+/* ── Avatar ─────────────────────────────────────────────────────────────── */
+.message__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.message--shakespeare .message__avatar {
+  background: linear-gradient(
+    135deg,
+    var(--color-parchment-dark) 0%,
+    var(--color-parchment-deeper) 100%
+  );
+  border-color: var(--color-gold-dark);
+}
+
+.message--user .message__avatar {
+  background: linear-gradient(
+    135deg,
+    var(--color-parchment-shadow) 0%,
+    var(--color-parchment-dark) 100%
+  );
+  border-color: var(--color-border);
+}
+
+.message__avatar-text {
+  font-family: var(--font-heading);
+  font-size: 0.57rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* ── Body ───────────────────────────────────────────────────────────────── */
+.message__body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.message--user .message__body {
+  align-items: flex-end;
+}
+
+/* ── Bubble ─────────────────────────────────────────────────────────────── */
+.message__bubble {
+  padding: 13px 17px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.message--shakespeare .message__bubble {
+  background: var(--color-parchment-light);
+  border: 1px solid var(--color-border-light);
+  border-left: 3px solid var(--color-gold-dark);
+}
+
+.message--user .message__bubble {
+  background: var(--color-parchment-dark);
+  border: 1px solid var(--color-border);
+  border-right: 3px solid var(--color-crimson);
+}
+
+/* ── Text ───────────────────────────────────────────────────────────────── */
+.message__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message--user .message__text {
+  color: var(--color-ink-light);
+}
+
+/* ── Label ──────────────────────────────────────────────────────────────── */
+.message__label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--color-ink-faded);
+  font-style: italic;
+  padding: 0 2px;
+}
+
+/* ── Audio ──────────────────────────────────────────────────────────────── */
+.message__audio {
+  margin-top: 11px;
+  padding-top: 9px;
+  border-top: 1px dashed var(--color-border-light);
+}
+
+.message__play-btn {
+  background: transparent;
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold-dark);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  border-radius: 2px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.message__play-btn:hover {
+  background: var(--color-gold-dark);
+  color: var(--color-parchment-light);
+}
+
+/* ── Entrance animation ─────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

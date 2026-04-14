@@ -1,0 +1,124 @@
+/* ── ChatWindow — BEM ───────────────────────────────────────────────────── */
+.chat-window {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-window__scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Custom scrollbar */
+.chat-window__scroll::-webkit-scrollbar {
+  width: 7px;
+}
+.chat-window__scroll::-webkit-scrollbar-track {
+  background: var(--color-parchment-dark);
+}
+.chat-window__scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+.chat-window__scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* ── Typing indicator ───────────────────────────────────────────────────── */
+.chat-window__typing {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  align-self: flex-start;
+  animation: fade-up 0.25s ease;
+}
+
+.chat-window__typing-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold-dark);
+  background: linear-gradient(
+    135deg,
+    var(--color-parchment-dark),
+    var(--color-parchment-deeper)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  flex-shrink: 0;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-window__typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--color-parchment-light);
+  border: 1px solid var(--color-border-light);
+  border-left: 3px solid var(--color-gold-dark);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-window__typing-label {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-ink-faded);
+}
+
+.chat-window__typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.chat-window__typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold-dark);
+  animation: typing-bounce 1.3s infinite ease-in-out;
+}
+.chat-window__typing-dots span:nth-child(2) {
+  animation-delay: 0.22s;
+}
+.chat-window__typing-dots span:nth-child(3) {
+  animation-delay: 0.44s;
+}
+
+@keyframes typing-bounce {
+  0%,
+  75%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  37% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
