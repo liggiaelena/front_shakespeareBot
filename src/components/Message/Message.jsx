@@ -1,22 +1,22 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './message.css'
 
 export default function Message({ message }) {
   const { role, text, audioBase64 } = message
   const isShakespeare = role === 'shakespeare'
   const audioRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
-  // Auto-play Shakespeare's audio when the message first renders
-  useEffect(() => {
-    if (isShakespeare && audioBase64 && audioRef.current) {
-      const timer = setTimeout(() => {
-        audioRef.current?.play().catch(() => {
-          // Browser may block autoplay before first user gesture; silently ignore
-        })
-      }, 250)
-      return () => clearTimeout(timer)
+
+  const handlePlayPause = () => {
+    if (!audioRef.current) return
+    if (isPlaying) {
+      audioRef.current.pause()
+    } else {
+      audioRef.current.currentTime = 0
+      audioRef.current.play()
     }
-  }, [isShakespeare, audioBase64])
+  }
 
   return (
     <div className={`message message--${role}`}>
@@ -36,18 +36,16 @@ export default function Message({ message }) {
                 ref={audioRef}
                 src={`data:audio/mpeg;base64,${audioBase64}`}
                 preload="auto"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => setIsPlaying(false)}
               />
               <button
                 className="message__play-btn"
-                onClick={() => {
-                  if (audioRef.current) {
-                    audioRef.current.currentTime = 0
-                    audioRef.current.play()
-                  }
-                }}
-                aria-label="Replay audio response"
+                onClick={handlePlayPause}
+                aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
               >
-                ▶&nbsp; Hearken Again
+                {isPlaying ? '❚❚  Silence' : '▶  Hearken Again'}
               </button>
             </div>
           )}
