@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:8000/api'
+const BASE = '/api'
 
 /**
  * Send a typed text message and receive Shakespeare's reply.
