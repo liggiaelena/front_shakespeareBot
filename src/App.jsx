@@ -76,7 +76,6 @@ function App() {
       // onChunk — one sentence arrived
       ({ text: chunkText, audio_base64 }) => {
         collectedChunks.push(audio_base64)
-        enqueue(audio_base64)
         setMessages(prev => prev.map(m =>
           m.id === placeholderId
             ? { ...m, text: m.text ? m.text + ' ' + chunkText : chunkText }
@@ -133,7 +132,6 @@ function App() {
       // onChunk
       ({ text: chunkText, audio_base64 }) => {
         collectedChunks.push(audio_base64)
-        enqueue(audio_base64)
         setMessages(prev => prev.map(m =>
           m.id === shaksPlaceholderId
             ? { ...m, text: m.text ? m.text + ' ' + chunkText : chunkText }
